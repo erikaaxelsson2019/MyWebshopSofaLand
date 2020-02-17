@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div id="homePage">
+    <div class="welcome-text">
+        <h1>SOFALAND knows how a comfortable and stylish sofa looks</h1>
+    </div>
+
+    <div class="products-link">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a class="nav-link" asp-area="Identity" asp-controller="Store" asp-action="PremiumStore">Premium Store</a>
+        }
+        else
+        {
+            <a class="nav-link" asp-area="" asp-controller="Store" asp-action="Index">View Products</a>
+        }
+
+    </div>
+</div>
+
+<div class="lovely-products">
+    <h3>Lovable Products</h3>
+    <div class="image-container">
+        <img src="~/images/clusterSofa.jpg" style="width: 300px; height: 200px;" />
+        <img src="~/images/leanSofa.jpg" style="width: 300px; height: 200px;" />
+        <img src="~/images/petitoSofa.jpg" style="width: 300px; height: 200px;" />
+        <img src="~/images/electraSoffa.jpg" style="width: 300px; height: 200px;" />
+    </div>
+</div>
+
+<div class="final-text">
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Id architecto laboriosam mollitia nesciunt quasi consequatur unde quo
+        inventore voluptatibus nulla. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Cumque, amet?
+    </p>
+
+    <div class="icons">
+        <a class="link-style" href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+        <a class="link-style" href="https://twitter.com/?lang=sv"><i class="fab fa-twitter-square"></i></a>
+        <a class="link-style" href="https://www.instagram.com/?hl=sv"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+
+
+

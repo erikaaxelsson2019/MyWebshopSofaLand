@@ -1,0 +1,12 @@
+﻿@model List<MyWebshop.Models.Product>
+
+
+    <div class="premium-partial">
+        @foreach (var product in Model)
+        {
+            @Html.Partial("PremiumProtoType", product)
+
+        }
+    </div>
+
+       

@@ -1,0 +1,20 @@
+﻿@model List<MyWebshop.Models.Product>
+
+    <div class="jumbotron">
+        <h1 class="display-4">
+            you can only dream of a more comfortable sofa
+        </h1>
+        <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+        Laudantium ad esse voluptas doloremque repellat ratione sit repellendus perspiciatis cupiditate. Non. </p>
+        <hr class="my-4">
+        <p>To learn more about each product you need to sign in. <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Login">Login here!</a></p>
+        
+    </div>
+
+    <div class="premium-partial">
+        @foreach (var product in Model)
+        {
+            @Html.Partial("ProtoType", product)
+
+        }
+    </div>

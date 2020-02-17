@@ -1,0 +1,111 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<div class="Registrer-page">
+    <div class="Registrer-container">
+        <div class="Registrer-form">
+            <h1>Create an Account</h1>
+            <h6>Please fill out this form to become a member</h6>
+            <p>Already a member? Click <a asp-page="./Login" class=link-style asp-route-returnUrl="@Model.ReturnUrl">here </a>to sign in!</p>
+            <hr />
+
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.FirstName"></label>
+                    <input asp-for="Input.FirstName" class="form-control" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.LastName"></label>
+                    <input asp-for="Input.LastName" class="form-control" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Birthdate"></label>
+                    <input asp-for="Input.Birthdate" class="form-control" type="date" name="bday" />
+                    <span asp-validation-for="Input.Birthdate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Adress"></label>
+                    <input asp-for="Input.Adress" class="form-control" />
+                    <span asp-validation-for="Input.Adress" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.City"></label>
+                    <input asp-for="Input.City" class="form-control" />
+                    <span asp-validation-for="Input.City" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">I have read and accepted the following <a href="#" class="link-style">terms & conditions </a></label>
+                </div>
+
+                <button type="submit" class="btn btn-secondary">Register</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-6 col-md-offset-2">
+    <section>
+        @{
+            if ((Model.ExternalLogins?.Count ?? 0) == 0)
+            {
+
+            }
+            else
+            {
+                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                    <div>
+                        <p>
+                            @foreach (var provider in Model.ExternalLogins)
+                            {
+                                <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                            }
+                        </p>
+                    </div>
+                </form>
+            }
+        }
+    </section>
+</div>
+
+
+<div class="homePage-link">
+    <a class="nav-link link-style" style="text-transform:uppercase" asp-area="" asp-controller="Home" asp-action="Index">Back to Home page</a>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

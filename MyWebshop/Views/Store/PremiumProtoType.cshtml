@@ -1,0 +1,27 @@
+﻿
+@model MyWebshop.Models.Product
+
+
+<div class="Proto-holder" align="center">
+    <div class="card" style="width: 28rem;">
+        <div class="card-body">
+            <img src="~/images/@Model.Photo" width="400" height="300" />
+            <div class="title-link">
+                <a href="#" class="card-title nav-link link-style">@Model.ProductName</a>
+            </div>
+            <h6>Price: £@Model.Price</h6>
+            <div class="sofa-description">
+                <h6>@Model.Description</h6>
+            </div>
+            <hr />
+            <p>Material: @Model.Material</p>
+            <p>Color: @Model.Color</p>
+            <p>Width: @Model.Width</p>
+            <p>Height: @Model.Height</p>
+            <p>Depth: @Model.Depth</p>
+            <hr />
+            <a class="btn btn-outline-secondary"><i class="fas fa-cart-plus"></i></a>
+        </div>
+    </div>
+</div>
+
